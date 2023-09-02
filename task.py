@@ -24,12 +24,7 @@ deta_headers = {
 }
 
 if args.act=="del":
-    payload = json.dumps({
-      "query": [{"isnow": 1}],
-      "limit": 1
-    })
-    tasks_req = requests.post(QUERY_URL,headers=deta_headers,data=payload,verify=False)
-    tasks=json.loads(tasks_req.text)
+    requests.delete(DELETE_URL,headers=deta_headers,verify=False)
     quit()
 
 

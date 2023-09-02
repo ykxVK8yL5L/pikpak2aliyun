@@ -24,16 +24,27 @@ deta_headers = {
 }
 
 if args.act=="del":
-  payload = {
-    "query": [{"isnow": 1}],
-    "limit": 1
-  }
-  tasks_req = requests.post(QUERY_URL,headers=deta_headers,data=payload,verify=False)
-  tasks=json.loads(tasks_req.text)
-  
-  quit()
+    payload = json.dumps({
+      "query": [{"isnow": 1}],
+      "limit": 1
+    })
+    tasks_req = requests.post(QUERY_URL,headers=deta_headers,data=payload,verify=False)
+    tasks=json.loads(tasks_req.text)
+    quit()
 
 
 if args.act=="download":
-  quit()
+    payload = json.dumps({
+      "query": [{"isnow": 1}],
+      "limit": 1
+    })
+    tasks_req = requests.post(QUERY_URL,headers=deta_headers,data=payload,verify=False)
+    tasks=json.loads(tasks_req.text)
+    task=tasks['items'][0]
+    urlinfo = task['url'].split("##");
+    streamurl = urlinfo[0]
+    cmd = "aria2c --conf aria2.conf --seed-time=0 -o "+urlinfo[1]+" -d downloads -c \""+streamurl+"\""
+    os.system(cmd)
+    return task["key"]
+    quit()
 

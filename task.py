@@ -37,6 +37,8 @@ if args.act=="download":
     })
     tasks_req = requests.post(QUERY_URL,headers=deta_headers,data=payload,verify=False)
     tasks=json.loads(tasks_req.text)
+    if len(tasks['items'])==0:
+        quit()
     task=tasks['items'][0]
     urlinfo = task['url'].split("##");
     streamurl = urlinfo[0]

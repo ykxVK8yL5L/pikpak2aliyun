@@ -1,8 +1,10 @@
 # pikpak2aliyun
 转存PikPak到阿里云盘
 
-# 在阿里云备份盘建立要上传到的文件夹，默认是PikPak,加密文件夹为PikPak-encrypt  
-# PikPak下载列表管理工具:https://deta.space/discovery/@pikpak/pikpak
+# 在阿里云备份盘建立要上传到的文件夹   
+默认是PikPak,加密文件夹为PikPak-encrypt  
+# PikPak下载列表管理工具:   
+https://deta.space/discovery/@pikpak/pikpak
 
 # 所需secrets:   
 ALIYUN_REFRESH_TOKEN: 阿里云刷新token,获取方法:https://github.com/messense/aliyundrive-webdav

@@ -9,4 +9,8 @@ ALIST_ENCRYPT_PASSWORD: 文件的加密密码
 
 
 
-## 转存PikPak的文件到阿里云盘
+## 删除旧的workflow需要修改actions权限
+```
+Settings > Actions > General > Workflow permissions
+把Read repository contents permission 改成 Read and write permissions
+```

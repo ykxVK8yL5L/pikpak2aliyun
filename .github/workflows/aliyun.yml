@@ -48,6 +48,7 @@ jobs:
         run: |
           mkdir downloads
           taskkey=$(python task.py --projet="${{ secrets.DETA_PROJECT_ID }}" --apikey="${{ secrets.DETA_API_KEY }}" --act="download")
+          echo $taskkey
           filename=$(ls downloads | head -n1)
           echo "::set-output name=path::downloads/$filename"
           echo "::set-output name=filename::$filename"

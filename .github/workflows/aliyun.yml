@@ -48,7 +48,6 @@ jobs:
         run: |
           mkdir downloads
           python task.py --projet="${{ secrets.DETA_PROJECT_ID }}" --apikey="${{ secrets.DETA_API_KEY }}" --act="download"
-          echo $taskkey
           filename=$(ls downloads | head -n1)
           echo "::set-output name=path::downloads/$filename"
           echo "::set-output name=filename::$filename"
@@ -58,7 +57,7 @@ jobs:
           
       - name: 上传到Aliyun
         uses: thinkdolabs/curl@v1
-        if: steps.downloading.outputs.path != '' && !cancelled() && !failure()
+        if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
         with:
           args: --upload-file ${{ steps.downloading.outputs.path }}  http://aliyun:8080/${{ github.event.inputs.Folder}}/${{ steps.downloading.outputs.filename }}
           

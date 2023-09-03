@@ -55,7 +55,7 @@ if args.act=="download":
     #os.system('cls' if os.name == 'nt' else 'clear')
     #print(f'::set-output name=taskkey::{task["key"]}')
     with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-        print(f'{taskkey}={task["key"]}', file=fh)
+        print(f'taskkey={task["key"]}', file=fh)
     quit()
 
 

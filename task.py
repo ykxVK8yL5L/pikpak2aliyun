@@ -17,7 +17,7 @@ DETA_DATAKEY=args.apikey
 DETA_PROJECT_ID=args.projet
 
 QUERY_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/query"
-DELETE_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/{args.taskkey}"
+DELETE_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/items/{args.taskkey}"
 UPDATE_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/items/"
 
 deta_headers = {

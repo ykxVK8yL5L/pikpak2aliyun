@@ -51,7 +51,7 @@ if args.act=="download":
     testupdateurl=UPDATE_URL+task["key"]
     put_req = requests.patch(UPDATE_URL+task["key"],headers=deta_headers,data=putpayload,verify=False)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(task["key"])
+    print(f'::set-output name=taskkey::{task["key"]}')
     quit()
 
 

@@ -1,7 +1,7 @@
-import pymongo
 import sys
 import argparse
 import json
+import requests
 
 parser = argparse.ArgumentParser(description='下载任务管理')
 parser.add_argument("--act", help="操作类型：download,del", default="download")
@@ -17,6 +17,7 @@ DETA_PROJECT_ID=args.projet
 
 QUERY_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/query"
 DELETE_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/{args.taskkey}"
+UPDATE_URL=f"https://database.deta.sh/v1/{DETA_PROJECT_ID}/pikpak_task/items/"
 
 deta_headers = {
     'X-API-Key':DETA_DATAKEY,
@@ -40,6 +41,15 @@ if args.act=="download":
     streamurl = urlinfo[0]
     cmd = "aria2c --conf aria2.conf --seed-time=0 -o "+urlinfo[1]+" -d downloads -c \""+streamurl+"\""
     os.system(cmd)
-    return task["key"]
+    # 更新下载状态
+    putpayload = json.dumps({
+      "set" : {
+            "isnow": 10,
+        }
+    })
+    testupdateurl=UPDATE_URL+task["key"]
+    put_req = requests.patch(UPDATE_URL+task["key"],headers=deta_headers,data=putpayload,verify=False)
+    print(task["key"])
     quit()
+
 

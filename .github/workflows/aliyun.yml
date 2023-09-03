@@ -69,7 +69,7 @@ jobs:
           echo "::set-output name=status::ok"
         
       - name: 删除旧的上传记录
-        uses: Mattraks/delete-workflow-runs@v1.2.3
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}

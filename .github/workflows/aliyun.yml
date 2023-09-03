@@ -67,6 +67,13 @@ jobs:
         run: |
           python task.py --projet="${{ secrets.DETA_PROJECT_ID }}" --apikey="${{ secrets.DETA_API_KEY }}" --taskkey="${{ steps.downloading.outputs.taskkey }}" --act="del"
           echo "::set-output name=status::ok"
+          
+      - name: 开启新的下载任务
+        uses: benc-uk/workflow-dispatch@v1
+        if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
+        with:
+          workflow: aliyun.yml
+          ref: main
         
       - name: 删除旧的上传记录
         uses: Mattraks/delete-workflow-runs@v2

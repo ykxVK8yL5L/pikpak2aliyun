@@ -50,8 +50,10 @@ if args.act=="download":
     })
     testupdateurl=UPDATE_URL+task["key"]
     put_req = requests.patch(UPDATE_URL+task["key"],headers=deta_headers,data=putpayload,verify=False)
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(f'::set-output name=taskkey::{task["key"]}')
+    #os.system('cls' if os.name == 'nt' else 'clear')
+    #print(f'::set-output name=taskkey::{task["key"]}')
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        print(f'{taskkey}={task["key"]}', file=fh)
     quit()
 
 

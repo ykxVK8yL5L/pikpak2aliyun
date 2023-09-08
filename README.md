@@ -3,7 +3,7 @@
 视频演示:https://youtu.be/6ll5GhxFcWs   
 
 # 在阿里云备份盘建立要上传到的文件夹   
-默认是PikPak,加密文件夹为PikPak-encrypt  
+默认是PikPak,加密文件夹为PikPak-encrypt 【注意区分大小写】  
 # PikPak下载列表管理工具:   
 https://deta.space/discovery/@pikpak/pikpak
 

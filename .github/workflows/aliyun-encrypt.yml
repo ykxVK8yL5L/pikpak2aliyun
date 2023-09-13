@@ -66,11 +66,15 @@ jobs:
         run: |
            ${{ github.workspace }}/dist/nodejs-linux '${{ secrets.ALIST_ENCRYPT_PASSWORD }}' aesctr enc '${{ github.workspace }}/downloads/' '${{ github.workspace }}/out/' encName
            filename=$(ls out | head -n1)
-           sha1_s=`openssl sha1 out/$filename | awk '{ print $2 }'`
+           extension=$(awk 'BEGIN{srand();}{a[NR]=$0}END{print a[int(rand()*NR)+1]}' suffixes | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+           filename_no_suffix="${filename%.*}"
+           newfilename="$filename_no_suffix"."$extension"
+           mv out/$filename out/$newfilename
+           sha1_s=`openssl sha1 out/$newfilename | awk '{ print $2 }'`
            header="OC-Checksum:sha1:$sha1_s"
            echo "::set-output name=header::$header"
-           echo "::set-output name=filename::$filename"
-           echo "::set-output name=path::out/$filename"
+           echo "::set-output name=filename::$newfilename"
+           echo "::set-output name=path::out/$newfilename"
            size=$(ls -l out/$filename | awk '{print $5}' )
            echo "::set-output name=size::$size"
           

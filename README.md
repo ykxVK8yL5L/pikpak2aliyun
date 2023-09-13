@@ -19,3 +19,7 @@ ALIST_ENCRYPT_PASSWORD: 文件的加密密码
 Settings > Actions > General > Workflow permissions
 把Read repository contents permission 改成 Read and write permissions
 ```
+
+
+
+### 20230813加入文件混淆后缀，解密不影响使用

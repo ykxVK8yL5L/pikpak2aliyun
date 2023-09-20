@@ -69,7 +69,9 @@ jobs:
            extension=$(awk 'BEGIN{srand();}{a[NR]=$0}END{print a[int(rand()*NR)+1]}' suffixes | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
            filename_no_suffix="${filename%.*}"
            newfilename="$filename_no_suffix"."$extension"
-           mv out/$filename out/$newfilename
+           if [ "$filename" != "$newfilename" ]; then
+            	mv out/$filename out/$newfilename
+           fi
            sha1_s=`openssl sha1 out/$newfilename | awk '{ print $2 }'`
            header="OC-Checksum:sha1:$sha1_s"
            echo "::set-output name=header::$header"

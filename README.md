@@ -21,5 +21,5 @@ Settings > Actions > General > Workflow permissions
 ```
 
 
-
+### github actions的linux主机在加密文件时有些会加密失败，可以换成macos主机可以避免
 ### 20230813加入文件混淆后缀，解密不影响使用

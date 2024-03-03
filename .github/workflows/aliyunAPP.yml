@@ -1,4 +1,4 @@
-name: PikPak转存Aliyun
+name: PikPak转存Aliyun APP KEY
 on:
   repository_dispatch:
   workflow_dispatch:

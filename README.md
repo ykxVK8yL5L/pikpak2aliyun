@@ -1,3 +1,4 @@
+# Tip：注册deta.space的时候要开启才可以使用api_key 开启方法看这里https://deta.space/docs/en/build/space-kit
 # pikpak2aliyun
 转存PikPak到阿里云盘   
 视频演示:https://youtu.be/6ll5GhxFcWs   

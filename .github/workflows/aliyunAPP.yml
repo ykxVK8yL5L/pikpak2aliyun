@@ -11,6 +11,7 @@ on:
 jobs:
   Aria2-Aliyun:
     runs-on: ubuntu-latest
+    container: ubuntu
     services:
       aliyun:
         image: messense/aliyundrive-webdav
@@ -22,19 +23,12 @@ jobs:
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 
-      - name: 增加可用空间 (删除dotnet, android、haskell、CodeQL)
-        shell: bash
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /usr/local/lib/android
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /opt/hostedtoolcache/CodeQL
       - name: 检查空间使用情况
         run: |
           echo "Free space:"
           df -h
       - name: 安装Aria2
-        run: sudo apt install -y aria2 
+        run: apt install -y aria2 
       - name: 安装Python3.9
         uses: actions/setup-python@v2
         with:

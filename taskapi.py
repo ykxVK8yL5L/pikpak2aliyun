@@ -33,7 +33,7 @@ if args.act=="download":
     payload = json.dumps({"action": "query"})
     tasks_req = requests.post(API_URL,headers=deta_headers,data=payload,verify=False)
     tasks=json.loads(tasks_req.text)
-    if len(tasks['items']) < 1:
+    if len(tasks) < 1:
         quit()
     task=tasks[0]
     urlinfo = task['url'].split("##");

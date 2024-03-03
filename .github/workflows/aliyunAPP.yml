@@ -28,7 +28,7 @@ jobs:
           echo "Free space:"
           df -h
       - name: 安装Aria2
-        run: apt install -y aria2 
+        run: apt-get update; apt-get install aria2 -y 
       - name: 安装Python3.9
         uses: actions/setup-python@v2
         with:

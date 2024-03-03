@@ -1,5 +1,6 @@
 # 重要更新：
 ## 由于之前的方法需要开启开发者模式 比较麻烦现在对代码进行更新，使用更方便
+# 演示视频:https://youtu.be/0h6t1HzFAug
 
 ## 安装PikPak下载列表管理工具(之前安装过的请更新):   
 https://deta.space/discovery/@pikpak/pikpak

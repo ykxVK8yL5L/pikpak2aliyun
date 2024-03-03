@@ -38,11 +38,11 @@ if args.act=="download":
     task=tasks[0]
     urlinfo = task['url'].split("##");
     streamurl = urlinfo[0]
-    cmd = "aria2c --conf aria2.conf --seed-time=0 -o "+urlinfo[1]+" -d downloads -c \""+streamurl+"\""
-    os.system(cmd)
     # 更新下载状态
     putpayload = json.dumps({"action": "update","data":task['key']})
     put_req = requests.post(API_URL,headers=deta_headers,data=putpayload,verify=False)
+    cmd = "aria2c --conf aria2.conf --seed-time=0 -o "+urlinfo[1]+" -d downloads -c \""+streamurl+"\""
+    os.system(cmd)
     #os.system('cls' if os.name == 'nt' else 'clear')
     #print(f'::set-output name=taskkey::{task["key"]}')
     with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:

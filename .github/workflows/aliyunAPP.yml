@@ -47,7 +47,7 @@ jobs:
         id: downloading
         run: |
           mkdir downloads
-          python task.py --projet="${{ secrets.DETA_PROJECT_ID }}" --apikey="${{ secrets.DETA_API_KEY }}" --act="download"
+          python taskapi.py --projet="${{ secrets.DETA_PROJECT_URL }}" --apikey="${{ secrets.DETA_APP_KEY }}" --act="download"
           filename=$(ls downloads | head -n1)
           echo "::set-output name=path::downloads/$filename"
           echo "::set-output name=filename::$filename"
@@ -65,14 +65,14 @@ jobs:
         id:  database
         if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
         run: |
-          python task.py --projet="${{ secrets.DETA_PROJECT_ID }}" --apikey="${{ secrets.DETA_API_KEY }}" --taskkey="${{ steps.downloading.outputs.taskkey }}" --act="del"
+          python taskapi.py --projet="${{ secrets.DETA_PROJECT_URL }}" --apikey="${{ secrets.DETA_APP_KEY }}" --taskkey="${{ steps.downloading.outputs.taskkey }}" --act="del"
           echo "::set-output name=status::ok"
           
       - name: 开启新的下载任务
         uses: benc-uk/workflow-dispatch@v1
         if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
         with:
-          workflow: aliyun.yml
+          workflow: aliyunAPP.yml
           ref: main
         
       - name: 删除旧的上传记录

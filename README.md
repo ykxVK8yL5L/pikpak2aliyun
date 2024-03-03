@@ -1,3 +1,24 @@
+# 重要更新：
+## 由于之前的方法需要开启开发者模式 比较麻烦现在对代码进行更新，使用更方便
+
+## 安装PikPak下载列表管理工具(之前安装过的请更新):   
+https://deta.space/discovery/@pikpak/pikpak
+
+## deta.space后台获取两个信息：
+- 安装后的网址：添加secrets:DETA_PROJECT_URL
+- 在项目设置的Keys里添加APP KEY（第二个）:添加secrets:DETA_APP_KEY
+完成设置  运行Actions:PikPak转存Aliyun APP KEY  
+   
+## 添加secrets：ALIYUN_REFRESH_TOKEN: 阿里云刷新token    
+获取方法:https://github.com/messense/aliyundrive-webdav    
+
+That's ALL   
+***  
+***
+
+
+
+
 # Tip：注册deta.space的时候要开启才可以使用api_key 开启方法看这里https://deta.space/docs/en/build/space-kit
 # pikpak2aliyun
 转存PikPak到阿里云盘   

@@ -7,7 +7,7 @@ import requests
 parser = argparse.ArgumentParser(description='下载任务管理')
 parser.add_argument("--act", help="操作类型：download,del", default="download")
 parser.add_argument("--projet", help="deta.space的网址", default="")
-parser.add_argument("--appkey", help="deta.space的x_api_key", default="")
+parser.add_argument("--appkey", help="deta.space的X-Space-App-Key", default="")
 parser.add_argument("--taskkey", help="要删除的任务key", default="")
 
 args = parser.parse_args()

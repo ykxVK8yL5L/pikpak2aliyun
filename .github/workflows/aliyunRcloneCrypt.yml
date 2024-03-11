@@ -6,7 +6,7 @@ on:
       Folder:
         description: '保存目录'
         required: true
-        default: 'PikPak'
+        default: 'Crypt'
 
 jobs:
   Aria2-Aliyun:
@@ -49,12 +49,15 @@ jobs:
           size=$(ls -l downloads/$filename | awk '{print $5}' )
           echo "::set-output name=size::$size"
           
-      - name: 上传到Aliyun
-        uses: thinkdolabs/curl@v1
+      - name: rclone
         if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
+        uses: wei/rclone@v1
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CLOUDREVE_CONF }}
         with:
-          args: --upload-file ${{ steps.downloading.outputs.path }}  http://aliyun:8080/${{ github.event.inputs.Folder}}/${{ steps.downloading.outputs.filename }}
+          args: copy ${{ steps.downloading.outputs.path }} crypt:/${{ github.event.inputs.Folder}}
           
+      
       - name: 保存数据，删除远程已经下载列表
         id:  database
         if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()

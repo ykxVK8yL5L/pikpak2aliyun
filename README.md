@@ -17,8 +17,31 @@ That's ALL
 ***  
 ***
 
+## 20240311加入Rclone加密上传功能，Alist兼容Rclone加密
+- 阿里云根目录下创建文件夹Crypt，可根据需求修改，与Rclone配置一致即可
+- 添加名称为RCLONE_CONF的secrets，内容为:
+```
+[aliyun]
+type = webdav
+url = http://aliyun:8080
+vendor = other
 
-
+[crypt]
+type = crypt
+remote = aliyun:/Crypt
+directory_name_encryption = false
+password = fZDDbSkoj3EmJtAUBmblbugUJWwtZBfp7yc
+password2 = CCIjpR97jXUcb7nkXaSXz78J7kev05XSFmk
+filename_encryption = standard
+filename_encoding = base64
+```
+上面的配置中   
+密码为:test123456   
+盐为:123456test   
+关闭文件夹加密   
+文件名加密为标准   
+文件名加密为base64   
+### 请注意alist配置要一致才可正常显示
 
 # Tip：注册deta.space的时候要开启才可以使用api_key 开启方法看这里https://deta.space/docs/en/build/space-kit
 # pikpak2aliyun

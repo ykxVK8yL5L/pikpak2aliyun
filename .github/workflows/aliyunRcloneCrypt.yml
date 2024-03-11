@@ -1,4 +1,4 @@
-name: PikPak转存Aliyun APP KEY
+name: PikPak转存Aliyun使用Rclone加密
 on:
   repository_dispatch:
   workflow_dispatch:

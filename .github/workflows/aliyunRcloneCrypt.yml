@@ -53,7 +53,7 @@ jobs:
         if: steps.downloading.outputs.filename != '' && !cancelled() && !failure()
         uses: wei/rclone@v1
         env:
-          RCLONE_CONF: ${{ secrets.RCLONE_CLOUDREVE_CONF }}
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         with:
           args: copy ${{ steps.downloading.outputs.path }} crypt:/${{ github.event.inputs.Folder}}
           

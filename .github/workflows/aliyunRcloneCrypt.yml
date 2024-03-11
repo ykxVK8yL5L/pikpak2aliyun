@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       Folder:
-        description: '保存目录'
+        description: '保存目录[没啥用]'
         required: true
         default: 'Crypt'
 
@@ -55,7 +55,7 @@ jobs:
         env:
           RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         with:
-          args: copy ${{ steps.downloading.outputs.path }} crypt:/${{ github.event.inputs.Folder}}
+          args: copy ${{ steps.downloading.outputs.path }} crypt:/
           
       
       - name: 保存数据，删除远程已经下载列表
